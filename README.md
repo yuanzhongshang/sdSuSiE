@@ -20,8 +20,7 @@ library(sdSuSiE)
 
 ## Quick Start
 
-See [Tutorial](https://yuanzhongshang.github.io/sdSuSiE/) for detailed examples.                                                                                                                               |
-
+See [Tutorial](https://yuanzhongshang.github.io/sdSuSiE/) for detailed examples.                                                                                                                      
 
 ## Development
 This R package is developed by Lu Liu, Zhongshang Yuan and Xiang Zhou.
