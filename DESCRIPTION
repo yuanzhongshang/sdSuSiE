@@ -1,0 +1,19 @@
+Package: sdSuSiE
+Type: Package
+Title: sdSuSiE(Sex-dimorphic mapping with sum of the single effects
+        model)
+Version: 1.0
+Date: 2025-03-20
+Author: Lu Liu, Zhongshang Yuan and Xiang Zhou
+Maintainer: Zhongshang Yuan <yuanzhongshang@sdu.edu.cn>
+Description: sdSuSiE is a package designed for sex-dimorphic fine-mapping using summary statistics from sex-stratified genome-wide association studies (GWAS).
+License: GPL (>= 3)
+Encoding: UTF-8
+RoxygenNote: 7.3.1
+Imports: R6, nloptr, cowplot, dplyr, ggplot2, ggrepel, Rcpp (>=
+        1.0.13-1), RcppArmadillo, parallel, doParallel, foreach
+LinkingTo: Rcpp, RcppArmadillo
+LazyData: true
+NeedsCompilation: yes
+Packaged: 2025-03-24 14:44:17 UTC; luliuu
+Depends: R (>= 3.5.0)
