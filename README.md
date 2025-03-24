@@ -1,5 +1,5 @@
 # sdSuSiE
-![sdSuSiE\_pipeline](sdSuSiE.jpg)
+![sdSuSiE\_pipeline](sdSuSiE.png)
 sdSuSiE (Sex-dimorphic mapping with sum of the single effects model) is a package designed for sex-dimorphic fine-mapping using summary statistics from sex-stratified genome-wide association studies (GWAS). sdSuSiE explicitly models sex-specific genetic effects while incorporating shared genetic effects across sexes. It properly accounts for linkage disequilibrium (LD) patterns across different types of genetic effects and extends the SuSiE framework to sex-dimorphic fine-mapping. As a result, sdSuSiE provides calibrated credible set coverage and posterior inclusion probabilities (PIPs). 
 
 ## Installation
