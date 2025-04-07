@@ -4,7 +4,7 @@ title: A Quick Guide
 ---
 
 **sdSuSiE** is a package designed for sex-dimorphic fine-mapping using summary statistics from sex-stratified genome-wide association studies (GWAS). This package includes:
-- A Bayesian method: **sdSuSiE**, which explicitly models sex-specific genetic effects while incorporating shared genetic effects across sexes. It properly accounts for linkage disequilibrium (LD) patterns across different types of genetic effects and extends the SuSiE framework to sex-dimorphic fine-mapping.
+- A Bayesian method: **sdSuSiE**, which explicitly models sex differences in genetic effects while accounting for correlations induced by linkage disequilibrium and sample size imbalances between sexes.It uses summary statistics from sex-stratified GWASs as inputs and extends the recent scalable variational inference algorithm SuSiE to fine-map sex-dimorphic effects. 
 - A frequentist method: **stepwise regression**, which extends the standard stepwise selection procedure in the [COJO framework](https://www.nature.com/articles/ng.2213) for sex-dimorphic fine-mapping.
 
 Commonly used sex-stratified GWAS summary statistics can be obtained from:
