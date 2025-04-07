@@ -7,7 +7,7 @@ Sex-dimorphic mapping with sum of the single effects model (sdSuSiE) explicitly 
 
 Cite `sdSuSiE`
 -------------------
-Lu Liu, Zhongshang Yuan, Xiang Zhou, Conditional transcriptome-wide association study for fine-mapping candidate causal genes, 2025.
+Lu Liu, Zhongshang Yuan, Xiang Zhou, Scalable and powerful sex-dimorphic fine-mapping with summary statistics from sex-stratified genome-wide association studies, 2025.
 
 Contact
 -------------------
