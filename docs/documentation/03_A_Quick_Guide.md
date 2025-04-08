@@ -209,8 +209,8 @@ The main results we are interested in include:
 - V: A list of length L, where each element is a 2 by 2 matrix representing the prior variance estimate.
 - ELBO: A vector storing the evidence lower bound (ELBO) achieved at each iteration of the model-fitting algorithm, which aims to maximize the ELBO.
 - Credible_Set: The estimated credible sets for fine-mapping.
-- posterior_mean: A matrix where the first column contains the posterior mean for *β*<sub>c</sub> (common effects) and the second column contains the posterior mean for \eqn{\beta_d} (sex-dimorphic effects).
-- posterior_variance: A matrix with the first column being the variance for \eqn{\beta_c}, the second column being the variance for \eqn{\beta_d}, and the third column being the covariance between \eqn{\beta_c} and \eqn{\beta_d}.
+- posterior_mean: A matrix where the first column contains the posterior mean for *β*<sub>c</sub> (common effects) and the second column contains the posterior mean for *β*<sub>d</sub> (sex-dimorphic effects).
+- posterior_variance: A matrix with the first column being the variance for *β*<sub>c</sub>, the second column being the variance for *β*<sub>d</sub>, and the third column being the covariance between *β*<sub>c</sub> and *β*<sub>d</sub>.
 
 The result can be visualized with the sex-stratified GWASs, univariate sex-dimorphic analysis and sdSuSiE results in Locuszoom plots.
 ```r
@@ -272,7 +272,7 @@ The main results we are interested in include:
 - se_c: The standard errors of the effect size estimates.
 - p_c: The p-values of selected SNPs in the jointly fitted model.
 - LD_r: The pairwise LD values among selected SNPs.
-- sig: Indicator of significance for each SNP (1 if `p_c < 5e-8`, 0 otherwise).
+- sig: Indicator of significance for each SNP (1 if p_c < 5e-8, 0 otherwise).
 
 Contact
 -------------------
