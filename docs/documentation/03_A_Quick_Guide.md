@@ -216,7 +216,7 @@ The result can be visualized with the sex-stratified GWASs, univariate sex-dimor
 ```r
 sdSuSiE_Plot(res, LDmat_list, summary_list)
 ```
-![sdSuSiE\_pipeline](sdSuSiE_Plot.png)
+![](sdSuSiE_Plot.png)
 
 
 Run stepwise regression
