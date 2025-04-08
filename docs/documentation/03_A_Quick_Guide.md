@@ -144,8 +144,8 @@ Below are the optional inputs:
 - prior_weights: A numeric vector of length p specifying the prior probability that each SNP has a non-zero effect. By default, prior weights are assumed to be equal for all SNPs.
 - config_weights: A numeric vector of length 3 specifying the prior probabilities for different causal configurations: The first element represents the probability of a SNP having a common effect. The second element represents the probability of a SNP having a sex-dimorphic effect. The third element represents the probability of a SNP having both common and sex-dimorphic effects. The three elements must sum to 1. The default prior values are `-1 + sqrt(2)`, `-1 + sqrt(2)`, and `(-1 + sqrt(2))^2`, respectively.
 - config_names: A character vector of length 3 specifying the names for different causal configurations. The default prior values are `Common`, `Sex-dimorphic`, and `Both`, respectively.
-- estimate_residual_variance: A logical value indicating whether the residual variance should be estimated (`TRUE`) or fixed (`FALSE`, default).
-- cor_method: A string specifying the method to compute the 95% credible set based on correlations among SNPs in the region. Options include: `"min_abs_corr"`: Minimum absolute correlation (default); `"mean_abs_corr"`: Mean absolute correlation; `"median_abs_corr"`: Median absolute correlation.
+- estimate_residual_variance: A logical value indicating whether the residual variance should be estimated (TRUE) or fixed (`FALSE`, default).
+- cor_method: A string specifying the method to compute the 95% credible set based on correlations among SNPs in the region. Options include: `"min_abs_corr"`: Minimum absolute correlation (default); "mean_abs_corr": Mean absolute correlation; "median_abs_corr": Median absolute correlation.
 
 The output is an R6 object with PIPs, credible sets, and other features of the sex-dimorphic fine-mapping result. 
 ```r
@@ -203,13 +203,13 @@ head(res$posterior_variance)
 The main results we are interested in include:
 - PIP: A vector where each element represents the PIP of a SNP having a non-zero effect.
 - PIP_config: A matrix where each column corresponds to the PIP of a causal configuration. The columns represent the PIP of a SNP having a common effect, a sex-dimorphic effect, or both.
-- alpha: A list of length L, where each element is a matrix (p by the number of causal configurations) of PIPs. Each column represents the PIP for a specific scenario.
+- alpha: A list of length L, where each element is a matrix (p by the number of causal configurations) of PIPs. Each column represents the PIP for a causal configuration.
 - KL: A vector containing the single-effect Kullback–Leibler (KL) divergences.
 - sigma2: A numeric vector of estimated residual variance.
 - V: A list of length L, where each element is a 2 by 2 matrix representing the prior variance estimate.
-- ELBO: A vector storing the evidence lower bound achieved at each iteration of the model-fitting algorithm, which aims to maximize the ELBO.
+- ELBO: A vector storing the evidence lower bound (ELBO) achieved at each iteration of the model-fitting algorithm, which aims to maximize the ELBO.
 - Credible_Set: The estimated credible sets for fine-mapping.
-- posterior_mean: A matrix where the first column contains the posterior mean for \beta_c (common effects) and the second column contains the posterior mean for \eqn{\beta_d} (sex-dimorphic effects).
+- posterior_mean: A matrix where the first column contains the posterior mean for $\beta_c$ (common effects) and the second column contains the posterior mean for \eqn{\beta_d} (sex-dimorphic effects).
 - posterior_variance: A matrix with the first column being the variance for \eqn{\beta_c}, the second column being the variance for \eqn{\beta_d}, and the third column being the covariance between \eqn{\beta_c} and \eqn{\beta_d}.
 
 The result can be visualized with the sex-stratified GWASs, univariate sex-dimorphic analysis and sdSuSiE results in Locuszoom plots.
