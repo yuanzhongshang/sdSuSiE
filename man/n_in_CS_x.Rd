@@ -9,7 +9,7 @@ n_in_CS_x(x, coverage = 0.95)
 \arguments{
 \item{x}{A numeric vector representing SNP values.}
 
-\item{coverage}{The desired coverage (default is 0.95 or 95%).}
+\item{coverage}{The desired coverage (default is 0.95).}
 }
 \value{
 The number of SNPs needed in the credible set.
