@@ -77,7 +77,7 @@ An R6 object with PIPs, credible sets, and other features of the sex-dimorphic f
 
 \item{Credible_Set}{The estimated credible sets for fine-mapping.}
 
-\item{posterior_mean}{A matrix where the first column contains the posterior mean for \beta_c (common effects) and the second column contains the posterior mean for \eqn{\beta_d} (sex-dimorphic effects).}
+\item{posterior_mean}{A matrix where the first column contains the posterior mean for \eqn{\beta_c} (common effects) and the second column contains the posterior mean for \eqn{\beta_d} (sex-dimorphic effects).}
 
 \item{posterior_variance}{A matrix with the first column being the variance for \eqn{\beta_c}, the second column being the variance for \eqn{\beta_d}, and the third column being the covariance between \eqn{\beta_c} and \eqn{\beta_d}.}
 }
