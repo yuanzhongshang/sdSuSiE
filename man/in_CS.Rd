@@ -9,7 +9,7 @@ in_CS(res, coverage = 0.95)
 \arguments{
 \item{res}{A matrix where each row represents a set of SNP values.}
 
-\item{coverage}{The desired coverage (default is 0.95 or 95%).}
+\item{coverage}{The desired coverage (default is 0.95).}
 }
 \value{
 A matrix where each row is a binary vector indicating which SNPs are in the credible set.
