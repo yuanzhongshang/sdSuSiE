@@ -28,6 +28,7 @@ This package is supported for Windows 10, MAC and Linux. The package has been te
 - Windows 10: Home (1903)
 - MAC: OSX (10.14.1)
 - Linux: Ubuntu (16.04.6)
+Installation should take about one minute.
 
 #### 4. Some possible issues when installing the package, especially on the MacOS system
 (1) Cannot find tools necessary when using R in the MacOS system.
