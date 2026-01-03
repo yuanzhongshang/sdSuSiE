@@ -21,7 +21,15 @@ library(sdSuSiE)
 
 ## Quick Start
 
-See [Tutorial](https://yuanzhongshang.github.io/sdSuSiE/) for detailed examples.            
+See [Tutorial](https://yuanzhongshang.github.io/sdSuSiE/) for detailed examples.  
+
+## Version History
+
+| Version | Updated      | Description                                                                                                                                                                                                                                             |
+|---------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| [1.0](https://github.com/yuanzhongshang/GIFT/tree/v1.0) | 2025-03| Initial release.                                                                                                                                                                                                                   |
+| [2.0](https://github.com/yuanzhongshang/GIFT/tree/v2.0) | 2026-01|Add unit tests and documentation for reproduced analyses.                                                                                                                                 |
+
 
 ## Development
 This R package is developed by Lu Liu, Zhongshang Yuan and Xiang Zhou.
