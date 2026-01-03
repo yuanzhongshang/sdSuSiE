@@ -39,7 +39,7 @@ sbatch 2_region.sh
 ### Step 3:  Sex-dimorphic analysis
 We uploaded analysis codes for an exemplary trait, diastolic blood pressure (Data-Field 4079_irnt), , allowing users to follow the same procedure to reproduce results for all traits. For this trait, we prepared the inputs and applied sdSuSiE, stepwise regression, SuSiE-modify, and MESuSiE-modify for sex-dimorphic analysis.
 ```bash
-sbatch 3_analysis.R
+sbatch 3_analysis.sh
 ```
 Since we had already constructed different folders for each trait, we used the following bash script to process the remaining traits in parallel.
 ```bash
