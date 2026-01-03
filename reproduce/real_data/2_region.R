@@ -106,7 +106,7 @@ GWAS_Male_pro<-GWAS_Male_pro%>%mutate(Region = candidate_region_SNP$region)
 GWAS_Female_pro<-GWAS_Female[match(candidate_region_SNP$CHR_POS,GWAS_Female$CHR_POS),]
 GWAS_Female_pro<-GWAS_Female_pro%>%mutate(Region = candidate_region_SNP$region)
 
-#Write out the processed GWAS sumstat in cnadidate region
+#Write out the processed GWAS sumstat in candidate region
 GWAS_Female_pro<-dplyr::select(GWAS_Female_pro,c(CHR,POS,CHR_POS,REF,ALT,minor_allele,minor_AF,n_complete_samples,beta,se,tstat,pval,Region))
 GWAS_Male_pro<-dplyr::select(GWAS_Male_pro,c(CHR,POS,CHR_POS,REF,ALT,minor_allele,minor_AF,n_complete_samples,beta,se,tstat,pval,Region))
 bim_ref=bim_ukb[bim_ukb$CHR_POS %in% GWAS_Female_pro$CHR_POS,]
