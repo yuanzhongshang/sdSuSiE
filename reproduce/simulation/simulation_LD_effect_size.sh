@@ -6,8 +6,8 @@
 #SBATCH --mem=30G
 #SBATCH --cpus-per-task=10
 #SBATCH --array=1-100%100
-#SBATCH --output=/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/LD1000G/out/out_%a.out
-#SBATCH --error=/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/LD1000G/out/out_%a.err
+#SBATCH --output=/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/LDcombine/out/out_%a.out
+#SBATCH --error=/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/LDcombine/out/out_%a.err
 
 bash
 
