@@ -17,7 +17,8 @@ We performed comprehensive simulations across 40 different settings to highlight
 - [extreme settings](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_extreme.sh)
 - different reference panels: [in-sample LD](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_LDsubref.sh), 
 [out-of-sample LD](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_LD1000G.sh)
-
+- [combinations of LD intensity and heritability size settings](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_LD_effect_size.sh)
+  
 Real data applications
 -------------------
 We performed sex-dimorphic fine-mapping analysis on 626 traits (312 quantitative traits and 314 binary traits) across 50 phenotypic categories from three different data sources in the UK Biobank. 
