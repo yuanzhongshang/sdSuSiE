@@ -64,7 +64,6 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/sd/data_",rep,".RData"))
 
 #stepwise regression
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -93,7 +92,6 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -258,7 +256,6 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/sd/data_",rep,".RData"))
 
 #stepwise regression
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -287,7 +284,6 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -452,7 +448,6 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/sd/data_",rep,".RData"))
 
 #stepwise regression
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -481,7 +476,6 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -649,7 +643,6 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/sd/data_",rep,".RData"))
 
 #stepwise regression
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -678,7 +671,6 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -837,7 +829,6 @@ dir.create("causal")
 save(select_d,select_cd,file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/causal/data_",rep,".RData"))
 
 #univariate sex-dimorphic analysis
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 dir.create("sd")
 sd=(z_M/sqrt(N_M-1)-z_F/sqrt(N_F-1))/sqrt(1/(N_M-1)+1/(N_F-1))
 log_p_value <- pnorm(abs(sd), lower.tail = FALSE, log.p = TRUE)
@@ -847,7 +838,6 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/sd/data_",rep,".RData"))
 
 #stepwise regression
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -876,7 +866,6 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
