@@ -146,6 +146,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i]))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/susieadd"))
 dir.create("susieresult")
@@ -181,6 +182,32 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/mesusie/data_",rep,".RData"))
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i]))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
 
 #n_causal=2
 set.seed(1217-rep)
@@ -302,6 +329,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i]))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/susieadd"))
 dir.create("susieresult")
@@ -337,6 +365,32 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/mesusie/data_",rep,".RData"))
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i]))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
 
 #n_causal=3
 set.seed(1217-rep)
@@ -458,6 +512,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i]))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/susieadd"))
 dir.create("susieresult")
@@ -493,3 +548,30 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/mesusie/data_",rep,".RData"))
+
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i]))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/baseline/",n_causal[i],"/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
