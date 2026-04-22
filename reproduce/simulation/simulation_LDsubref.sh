@@ -15,6 +15,6 @@ let k=0
 for ((rep=1; rep<=100; rep++)); do
 let k=${k}+1
 if [ ${k} -eq ${SLURM_ARRAY_TASK_ID} ]; then
-Rscript simulation_LD.R ${rep}
+Rscript simulation_LDsubref.R ${rep}
 fi
 done
