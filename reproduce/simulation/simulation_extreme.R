@@ -64,6 +64,7 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/sd/data_",rep,".RData"))
 
 #stepwise regression
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -92,6 +93,7 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -144,6 +146,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/"))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/susieadd"))
 dir.create("susieresult")
@@ -159,7 +162,7 @@ write.table(data,paste0("susiePIP/region_",rep,".txt"),quote=FALSE)
 
 #MESuSiE-modify
 library(MESuSiE)
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/lowmaf/",maf[i]))
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/"))
 dir.create("mesusie")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/mesusie"))
 our<-meSuSie_core(mat_list,summary_list,L=10)
@@ -179,6 +182,32 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/mesusie/data_",rep,".RData"))
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/"))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/co/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
 
 #only sex-dimorphic effect setting
 set.seed(1217-rep)
@@ -229,6 +258,7 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/sd/data_",rep,".RData"))
 
 #stepwise regression
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -257,6 +287,7 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -309,6 +340,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/"))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/susieadd"))
 dir.create("susieresult")
@@ -324,7 +356,7 @@ write.table(data,paste0("susiePIP/region_",rep,".txt"),quote=FALSE)
 
 #MESuSiE-modify
 library(MESuSiE)
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/lowmaf/",maf[i]))
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/"))
 dir.create("mesusie")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/mesusie"))
 our<-meSuSie_core(mat_list,summary_list,L=10)
@@ -344,6 +376,32 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/mesusie/data_",rep,".RData"))
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/"))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/onlyinter/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
 
 #sex-specific effect setting
 set.seed(1217-rep)
@@ -394,6 +452,7 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/sd/data_",rep,".RData"))
 
 #stepwise regression
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -422,6 +481,7 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -474,6 +534,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/"))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/susieadd"))
 dir.create("susieresult")
@@ -489,7 +550,7 @@ write.table(data,paste0("susiePIP/region_",rep,".txt"),quote=FALSE)
 
 #MESuSiE-modify
 library(MESuSiE)
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/lowmaf/",maf[i]))
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/"))
 dir.create("mesusie")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/mesusie"))
 our<-meSuSie_core(mat_list,summary_list,L=10)
@@ -509,6 +570,32 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/mesusie/data_",rep,".RData"))
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/"))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/sexsp/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
 
 #extra common effect setting
 set.seed(1217-rep)
@@ -562,6 +649,7 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/sd/data_",rep,".RData"))
 
 #stepwise regression
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -590,6 +678,7 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -642,6 +731,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/"))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/susieadd"))
 dir.create("susieresult")
@@ -657,7 +747,7 @@ write.table(data,paste0("susiePIP/region_",rep,".txt"),quote=FALSE)
 
 #MESuSiE-modify
 library(MESuSiE)
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/lowmaf/",maf[i]))
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/"))
 dir.create("mesusie")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/mesusie"))
 our<-meSuSie_core(mat_list,summary_list,L=10)
@@ -677,6 +767,32 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/mesusie/data_",rep,".RData"))
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/"))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothco/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
 
 #extra sex-dimorphic effect setting
 set.seed(1217-rep)
@@ -721,6 +837,7 @@ dir.create("causal")
 save(select_d,select_cd,file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/causal/data_",rep,".RData"))
 
 #univariate sex-dimorphic analysis
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 dir.create("sd")
 sd=(z_M/sqrt(N_M-1)-z_F/sqrt(N_F-1))/sqrt(1/(N_M-1)+1/(N_F-1))
 log_p_value <- pnorm(abs(sd), lower.tail = FALSE, log.p = TRUE)
@@ -730,6 +847,7 @@ sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/sd/data_",rep,".RData"))
 
 #stepwise regression
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 ref_M_bim<-fread(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsex/ref/MALE/chr_",chr,".bim"))
 data=ref_M_bim[match(snp,ref_M_bim$V2),][,c(2,5,6)]
 colnames(data)=c("SNP","A1","A2")
@@ -758,6 +876,7 @@ dir.create("stepwise")
 write.table(res,paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/stepwise/res_",rep,".txt"), quote=FALSE, row.names=FALSE)
 
 #sdSuSiE
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 Z=z_M
 Beta=Z/sqrt(N_M-1)
 Se=1/sqrt(N_M-1)
@@ -810,6 +929,7 @@ data <- data.frame(
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
 
 #SuSiE-modify
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/susieadd"))
 dir.create("susieresult")
@@ -825,7 +945,7 @@ write.table(data,paste0("susiePIP/region_",rep,".txt"),quote=FALSE)
 
 #MESuSiE-modify
 library(MESuSiE)
-setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/lowmaf/",maf[i]))
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
 dir.create("mesusie")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/mesusie"))
 our<-meSuSie_core(mat_list,summary_list,L=10)
@@ -845,6 +965,32 @@ log_p_value <- pnorm(abs(z), lower.tail = FALSE, log.p = TRUE)
 sdp <- 2 * exp(log_p_value)
 sdr=data.frame(snp,sdp)
 save(sdr, file = paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/mesusie/data_",rep,".RData"))
+
+#SharePro_gxe
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/"))
+dir.create("sharepro05")
+setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/extreme/bothsd/sharepro05"))
+SNP=sub("_[^_]*$", "", rownames(z_M))
+N=N_M
+Z=z_M
+BETA=Z/sqrt(N_M-1)
+SE=1/sqrt(N_M-1)
+data1=data.frame(SNP,N,BETA,SE)
+
+Z=z_F
+BETA=Z/sqrt(N_F-1)
+SE=1/sqrt(N_F-1)
+N=N_F
+data2=data.frame(SNP,N,BETA,SE)
+
+write.table(data1,paste0("data1_",rep,".txt"),quote=F,row.names=F)
+write.table(data2,paste0("data2_",rep,".txt"),quote=F,row.names=F)
+write.table((LD_M+LD_F)/2,paste0("LD_",rep,".ld"),quote=F,row.names=F,col.names=F)
+
+system(paste0("python /net/mulan/home/luliuu/SharePro_gxe/src/SharePro/sharepro_gxe.py --z data1_",rep,".txt data2_",rep,".txt --pthres 0.5 --ld LD_",rep,".ld --save res_",rep))
+system(paste0("rm data1_",rep,".txt"))
+system(paste0("rm data2_",rep,".txt"))
+system(paste0("rm LD_",rep,".ld"))
 
 
 
