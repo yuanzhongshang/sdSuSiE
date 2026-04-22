@@ -15,7 +15,7 @@ We performed comprehensive simulations across 40 different settings to highlight
 - [different male-to-female sample size ratios](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_samplesize.sh)
 - [different MAFs of causal SNPs](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_maf.sh)
 - [extreme settings](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_extreme.sh)
-- different reference panels: [in-sample LD](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_LD.sh), 
+- different reference panels: [in-sample LD](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_LDsubref.sh), 
 [out-of-sample LD](https://github.com/yuanzhongshang/sdSuSiE/blob/main/reproduce/simulation/simulation_LD1000G.sh)
 
 Real data applications
