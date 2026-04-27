@@ -146,7 +146,7 @@ data <- data.frame(
   )
 write.table(data,paste0("susiePIP/region_",rep,"_",L,".txt"),quote=FALSE)
   
-#susie for the SDE
+#SuSiE-modify
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/20250404/simple/",h_c[i],"/1"))
 dir.create("susieadd")
 setwd(paste0("/net/mulan/disk2/luliuu/project4/realdata/Gtex/GWASsexsimulation/20250404/simple/",h_c[i],"/1/susieadd"))
@@ -173,5 +173,4 @@ save(fit,file = paste0("susieresult/region_",rep,".RData"))
 PIP=fit$pip
 data=data.frame(snp[c(1,3)],PIP)
 write.table(data,paste0("susiePIP/region_",rep,".txt"),quote=FALSE)
-
 }
