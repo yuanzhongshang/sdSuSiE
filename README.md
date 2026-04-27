@@ -29,6 +29,7 @@ See [Tutorial](https://yuanzhongshang.github.io/sdSuSiE/) for detailed examples.
 |---------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [1.0](https://github.com/yuanzhongshang/sdSuSiE/tree/v1.0) | 2025-03| Initial release.                                                                                                                                                                                                                   |
 | [2.0](https://github.com/yuanzhongshang/sdSuSiE/tree/v2.0) | 2026-01|Add unit tests and documentation for reproduced analyses.                                                                                                                                 |
+| [3.0](https://github.com/yuanzhongshang/sdSuSiE/tree/v3.0) | 2026-04|Add simulation code for LD settings and update the compared methods.
 
 
 ## Development
