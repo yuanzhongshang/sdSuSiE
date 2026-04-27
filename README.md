@@ -27,8 +27,8 @@ See [Tutorial](https://yuanzhongshang.github.io/sdSuSiE/) for detailed examples.
 
 | Version | Updated      | Description                                                                                                                                                                                                                                             |
 |---------|--------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| [1.0](https://github.com/yuanzhongshang/GIFT/tree/v1.0) | 2025-03| Initial release.                                                                                                                                                                                                                   |
-| [2.0](https://github.com/yuanzhongshang/GIFT/tree/v2.0) | 2026-01|Add unit tests and documentation for reproduced analyses.                                                                                                                                 |
+| [1.0](https://github.com/yuanzhongshang/sdSuSiE/tree/v1.0) | 2025-03| Initial release.                                                                                                                                                                                                                   |
+| [2.0](https://github.com/yuanzhongshang/sdSuSiE/tree/v2.0) | 2026-01|Add unit tests and documentation for reproduced analyses.                                                                                                                                 |
 
 
 ## Development
