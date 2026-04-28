@@ -2,7 +2,7 @@ Package: sdSuSiE
 Type: Package
 Title: sdSuSiE(Sex-dimorphic mapping with sum of the single effects
         model)
-Version: 2.0
+Version: 3.0
 Date: 2026-04-27
 Author: Lu Liu, Zhongshang Yuan and Xiang Zhou
 Maintainer: Zhongshang Yuan <yuanzhongshang@sdu.edu.cn>
